@@ -1,0 +1,2 @@
+[workspace]
+members = ["mapperx", "mapper", "phosphor-unit-failure-monitor"]
