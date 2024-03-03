@@ -3,6 +3,7 @@ use std::env;
 mod errors;
 mod mapper;
 use errors::Error;
+use mapper::mapper_subtree_remove;
 use mapper::mapper_wait;
 
 async fn wait_main(args: Vec<String>) -> Result<(), Box<dyn std::error::Error>> {
@@ -30,10 +31,9 @@ async fn subtree_main(args: Vec<String>) -> Result<(), Box<dyn std::error::Error
         println!("{}", err);
         return Err(err)?;
     }
-    let _namespace = split_strs[0];
-    let _interface = split_strs[1];
-
-    println!("TODO(wltu): subtree_main not implmented yet.");
+    let namespace = split_strs[0];
+    let interface = split_strs[1];
+    mapper_subtree_remove(namespace, interface).await?;
     Ok(())
 }
 
