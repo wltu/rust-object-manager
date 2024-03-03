@@ -1,7 +1,9 @@
 use std::env;
 
 mod errors;
+mod mapper;
 use errors::Error;
+use mapper::mapper_wait;
 
 async fn wait_main(args: Vec<String>) -> Result<(), Box<dyn std::error::Error>> {
     if args.len() < 3 {
@@ -9,8 +11,8 @@ async fn wait_main(args: Vec<String>) -> Result<(), Box<dyn std::error::Error>> 
         println!("{}", err);
         return Err(err)?;
     }
-    let _obj_path = args[2].parse::<String>()?;
-    println!("TODO(wltu): wait_main not implmented yet.");
+    let obj_path = args[2].parse::<String>()?;
+    mapper_wait(obj_path).await?;
     Ok(())
 }
 

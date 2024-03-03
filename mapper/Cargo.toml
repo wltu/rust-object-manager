@@ -5,3 +5,9 @@ edition = "2021"
 
 [dependencies]
 tokio = { version = "1.36.0", features = ["full"] }
+# Base is 3.15.2
+zbus = { git = "https://github.com/wltu/zbus.git", rev = "27cd0e24c8a149e515c9ff47a0a4ff94d9d31a13", default-features = false, features = ["tokio"] }
+# Base is 2.6.0
+zbus_names = { git = "https://github.com/wltu/zbus.git", rev = "27cd0e24c8a149e515c9ff47a0a4ff94d9d31a13" }
+futures-util = "0.3.23"
+
