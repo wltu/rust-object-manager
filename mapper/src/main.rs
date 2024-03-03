@@ -3,6 +3,7 @@ use std::env;
 mod errors;
 mod mapper;
 use errors::Error;
+use mapper::mapper_get_service;
 use mapper::mapper_subtree_remove;
 use mapper::mapper_wait;
 
@@ -44,8 +45,8 @@ async fn get_service_main(args: Vec<String>) -> Result<(), Box<dyn std::error::E
         return Err(err)?;
     }
 
-    let _obj_path = args[2].parse::<String>()?;
-    println!("TODO(wltu): get_service_main not implmented yet.");
+    let obj_path = args[2].parse::<String>()?;
+    println!("{:?}", mapper_get_service(obj_path).await?);
     Ok(())
 }
 

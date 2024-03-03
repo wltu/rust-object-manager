@@ -187,6 +187,19 @@ pub async fn mapper_subtree_remove(
     Ok(())
 }
 
+pub async fn mapper_get_service(
+    obj_path: String,
+) -> Result<Vec<String>, Box<dyn std::error::Error>> {
+    let connection = Connection::system().await?;
+    let proxy = ObjectMapperProxy::new(&connection).await?;
+    let object = proxy.get_object(obj_path.as_str(), Vec::new()).await?;
+    let mut output: Vec<String> = Vec::new();
+    for (key, _) in object {
+        output.push(key);
+    }
+    Ok(output)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
